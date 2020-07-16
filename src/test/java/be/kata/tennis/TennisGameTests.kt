@@ -38,8 +38,9 @@ class TennisGameTests {
     }
 
     @Test
-    fun `When a player has forty points and scores, they win the game`() {
+    fun `When a player has forty points and scores and the opponent has less than 40, they win the game`() {
         tennisGame.playerOne.score = Score.FORTY
+        tennisGame.playerTwo.score = Score.THIRTY
         tennisGame.playerOneScores()
 
         assertThat(tennisGame.playerOne.hasWon, `is`(true))
