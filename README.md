@@ -11,4 +11,9 @@ Some explanations can be found in commit messages.
 I added maven to easily add dependencies.
 Of course any other build tool, such as gradle, can be used instead.
 
-## TODO: how to compile and run
+## Run the application
+
+Using IntelliJ you can open the `TennisUI.kt` file and click on the green arrow in the gutter next to the main function.
+Or use a run configuration with main class `be.kata.tennis.TennisUIKt`
+
+If IntelliJ or a similar IDE is not available the application can be run by following the steps described in https://kotlinlang.org/docs/tutorials/command-line.html
