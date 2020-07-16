@@ -76,4 +76,21 @@ class TennisGameTests {
         assertThat(tennisGame.playerOne.hasWon, `is`(true))
     }
 
+    @Test
+    fun `When a player has won, the scores will not change anymore`() {
+        tennisGame.playerOne.score = Score.ADVANTAGE
+        tennisGame.playerTwo.score = Score.FORTY
+        tennisGame.playerOneScores()
+
+        assertThat(tennisGame.playerOne.hasWon, `is`(true))
+
+        tennisGame.playerOneScores()
+        tennisGame.playerTwoScores()
+
+        assertThat(tennisGame.playerOne.score.name, `is`("ADVANTAGE"))
+        assertThat(tennisGame.playerTwo.score.name, `is`("FORTY"))
+        assertThat(tennisGame.playerOne.hasWon, `is`(true))
+        assertThat(tennisGame.playerTwo.hasWon, `is`(false))
+    }
+
 }

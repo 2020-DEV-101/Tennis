@@ -16,6 +16,12 @@ internal class TennisGame {
     }
 
     private fun playerScores(player: Player, opponent: Player) {
+        if (!playerOne.hasWon && !playerTwo.hasWon) {
+            calculateScores(player, opponent)
+        }
+    }
+
+    private fun calculateScores(player: Player, opponent: Player) {
         when (player.score) {
             LOVE -> player.score = FIFTEEN
             FIFTEEN -> player.score = THIRTY
@@ -36,7 +42,6 @@ internal class TennisGame {
             }
             ADVANTAGE -> player.hasWon = true
         }
-
     }
 
     private fun setDeuce(player: Player, opponent: Player) {

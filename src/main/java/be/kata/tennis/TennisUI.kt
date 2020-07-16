@@ -8,9 +8,10 @@ import javax.swing.SwingConstants.LEADING
 internal class TennisUI : JFrame() {
 
     var playerOneScoreLbl: JLabel
-    var playerTwoScoreLbl : JLabel
-    var playerOneHasWonLbl : JLabel
-    var playerTwohasWonLbl : JLabel
+    var playerTwoScoreLbl: JLabel
+    var playerOneHasWonLbl: JLabel
+    var playerTwohasWonLbl: JLabel
+    lateinit var winnerLbl: JLabel
 
     init {
         var tennisGame = TennisGame()
@@ -24,18 +25,21 @@ internal class TennisUI : JFrame() {
                 playerOne = tennisGame.playerOne
                 playerTwo = tennisGame.playerTwo
                 updatePlayerLabels(playerOne, playerTwo)
+                winnerLbl.text = ""
             }
         }
         val playerOneScoreBtn = JButton("Player One scores").apply {
             addActionListener {
                 tennisGame.playerOneScores()
                 updatePlayerLabels(playerOne, playerTwo)
+                updateWinnerLabel(tennisGame)
             }
         }
         val playerTwoScoreBtn = JButton("Player Two scores").apply {
             addActionListener {
                 tennisGame.playerTwoScores()
                 updatePlayerLabels(playerOne, playerTwo)
+                updateWinnerLabel(tennisGame)
             }
         }
 
@@ -45,10 +49,13 @@ internal class TennisUI : JFrame() {
         playerOneHasWonLbl = JLabel("P1 has won: ${playerOne.hasWon}", null, LEADING)
         playerTwohasWonLbl = JLabel("P2 has won: ${playerTwo.hasWon}", null, LEADING)
 
+        winnerLbl = JLabel("", null, LEADING)
+
         createLayout(playerOneScoreBtn, playerTwoScoreBtn,
                 playerOneScoreLbl, playerTwoScoreLbl,
                 playerOneHasWonLbl, playerTwohasWonLbl,
-                resetBtn)
+                resetBtn,
+                winnerLbl)
 
         defaultCloseOperation = EXIT_ON_CLOSE
         setSize(500, 300)
@@ -62,6 +69,17 @@ internal class TennisUI : JFrame() {
         playerOneHasWonLbl.text = "P1 has won: ${playerOne.hasWon}"
         playerTwohasWonLbl.text = "P2 has won: ${playerTwo.hasWon}"
     }
+
+    private fun updateWinnerLabel(tennisGame: TennisGame) {
+        if (tennisGame.playerOne.hasWon) {
+            winnerLbl.text = "The winner is player one!"
+            winnerLbl.font = font.deriveFont(40f)
+        } else if (tennisGame.playerTwo.hasWon) {
+            winnerLbl.text = "The winner is player two!"
+            winnerLbl.font = font.deriveFont(40f)
+        }
+    }
+
 
     private fun createLayout(vararg arg: JComponent) {
 
@@ -83,8 +101,9 @@ internal class TennisUI : JFrame() {
                         .addComponent(arg[4])
                         .addComponent(arg[5]))
                 .addGroup(gl.createSequentialGroup()
-                        .addComponent(arg[6])
-                )
+                        .addComponent(arg[6]))
+                .addGroup(gl.createSequentialGroup()
+                        .addComponent(arg[7]))
         )
 
         gl.setVerticalGroup(gl.createSequentialGroup()
@@ -100,6 +119,8 @@ internal class TennisUI : JFrame() {
                         .addComponent(arg[5]))
                 .addGroup(gl.createParallelGroup()
                         .addComponent(arg[6]))
+                .addGroup(gl.createParallelGroup()
+                        .addComponent(arg[7]))
         )
 
         pack()
