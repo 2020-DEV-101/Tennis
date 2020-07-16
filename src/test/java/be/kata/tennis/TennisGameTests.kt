@@ -12,29 +12,29 @@ class TennisGameTests {
     @Test
     fun `A player's score should start at love`() {
 
-        assertThat(tennisGame.playerOne.score.value, `is`(equalTo("0")))
-        assertThat(tennisGame.playerTwo.score.value, `is`(equalTo("0")))
+        assertThat(tennisGame.playerOne.score.name, `is`(equalTo("LOVE")))
+        assertThat(tennisGame.playerTwo.score.name, `is`(equalTo("LOVE")))
     }
 
     @Test
     fun `When a player is at love and scores, they should have fifteen points`() {
         tennisGame.playerOneScores()
 
-        assertThat(tennisGame.playerOne.score.value, `is`(equalTo("15")))
+        assertThat(tennisGame.playerOne.score.name, `is`(equalTo("FIFTEEN")))
     }
 
     @Test
     fun `When a player scores twice, they should have thirty points`() {
         repeat(2) { tennisGame.playerOneScores() }
 
-        assertThat(tennisGame.playerOne.score.value, `is`(equalTo("30")))
+        assertThat(tennisGame.playerOne.score.name, `is`(equalTo("THIRTY")))
     }
 
     @Test
     fun `When a player scores three times, they should have forty points`() {
         repeat(3) { tennisGame.playerOneScores() }
 
-        assertThat(tennisGame.playerOne.score.value, `is`(equalTo("40")))
+        assertThat(tennisGame.playerOne.score.name, `is`(equalTo("FORTY")))
     }
 
     @Test
@@ -50,7 +50,7 @@ class TennisGameTests {
         tennisGame.playerOne.score = Score.DEUCE
         tennisGame.playerOneScores()
 
-        assertThat(tennisGame.playerOne.score.value, `is`("advantage"))
+        assertThat(tennisGame.playerOne.score.name, `is`("ADVANTAGE"))
     }
 
     @Test
@@ -69,8 +69,8 @@ class TennisGameTests {
 
         tennisGame.playerOneScores()
 
-        assertThat(tennisGame.playerOne.score.value, `is`(equalTo("deuce")))
-        assertThat(tennisGame.playerTwo.score.value, `is`(equalTo("deuce")))
+        assertThat(tennisGame.playerOne.score.name, `is`(equalTo("DEUCE")))
+        assertThat(tennisGame.playerTwo.score.name, `is`(equalTo("DEUCE")))
     }
 
 }
