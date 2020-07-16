@@ -8,5 +8,7 @@ For simplicity reasons everything will be committed on the master branch for thi
 When working in a team on a commercial application the team should decide on which git flow to use 
 and should be used by all contributors of that repository.
 Some explanations can be found in commit messages.
+I added maven to easily add dependencies.
+Of course any other build tool, such as gradle, can be used instead.
 
 ## TODO: how to compile and run
