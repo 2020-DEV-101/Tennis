@@ -40,12 +40,11 @@ class TennisTests {
     }
 
     @Test
-    fun `A player can not score more than 40 points`() {
+    fun `When a player has 40 points and scores, they win the game`() {
         val playerOne = Player()
 
-        assertThrows<NoSuchElementException> {
-            repeat(4) { playerOne.scorePoint() }
-        }
+        repeat(4) { playerOne.scorePoint() }
+        assertThat(playerOne.hasWon, `is`(true))
     }
 
 }

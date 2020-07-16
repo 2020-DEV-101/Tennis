@@ -3,6 +3,7 @@ package be.kata.tennis
 internal class Player{
 
     var score = 0
+    var hasWon = false
 
     private val scoreList = listOf(Score.LOVE, Score.FIFTEEN, Score.THIRTY, Score.FORTY)
     private val scoreIterator = scoreList.listIterator(0)
@@ -12,6 +13,11 @@ internal class Player{
     }
 
     fun scorePoint(){
-        score = scoreIterator.next().value
+        if (score == Score.FORTY.value) {
+            hasWon = true
+        } else
+        {
+            score = scoreIterator.next().value
+        }
     }
 }
