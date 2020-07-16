@@ -6,5 +6,6 @@ internal enum class Score(val value: String) {
     FIFTEEN("15"),
     THIRTY("30"),
     FORTY("40"),
-    DEUCE("deuce")
+    DEUCE("deuce"),
+    ADVANTAGE("advantage")
 }
