@@ -9,8 +9,6 @@ internal class TennisUI : JFrame() {
 
     var playerOneScoreLbl: JLabel
     var playerTwoScoreLbl : JLabel
-    var playerOneIsDeuceLbl : JLabel
-    var playerTwoIsDeuceLbl : JLabel
     var playerOneHasWonLbl : JLabel
     var playerTwohasWonLbl : JLabel
 
@@ -44,15 +42,11 @@ internal class TennisUI : JFrame() {
         playerOneScoreLbl = JLabel("P1 Score: ${playerOne.score.name}", null, LEADING)
         playerTwoScoreLbl = JLabel("P2 Score: ${playerTwo.score.name}", null, LEADING)
 
-        playerOneIsDeuceLbl = JLabel("P1 is deuce: ${playerOne.isDeuce}", null, LEADING)
-        playerTwoIsDeuceLbl = JLabel("P2 is deuce: ${playerTwo.isDeuce}", null, LEADING)
-
         playerOneHasWonLbl = JLabel("P1 has won: ${playerOne.hasWon}", null, LEADING)
         playerTwohasWonLbl = JLabel("P2 has won: ${playerTwo.hasWon}", null, LEADING)
 
         createLayout(playerOneScoreBtn, playerTwoScoreBtn,
                 playerOneScoreLbl, playerTwoScoreLbl,
-                playerOneIsDeuceLbl, playerTwoIsDeuceLbl,
                 playerOneHasWonLbl, playerTwohasWonLbl,
                 resetBtn)
 
@@ -64,9 +58,6 @@ internal class TennisUI : JFrame() {
     private fun updatePlayerLabels(playerOne: Player, playerTwo: Player) {
         playerOneScoreLbl.text = "P1 Score: ${playerOne.score.name}"
         playerTwoScoreLbl.text = "P2 Score: ${playerTwo.score.name}"
-
-        playerOneIsDeuceLbl.text = "P1 is deuce: ${playerOne.isDeuce}"
-        playerTwoIsDeuceLbl.text = "P2 is deuce: ${playerTwo.isDeuce}"
 
         playerOneHasWonLbl.text = "P1 has won: ${playerOne.hasWon}"
         playerTwohasWonLbl.text = "P2 has won: ${playerTwo.hasWon}"
@@ -93,9 +84,6 @@ internal class TennisUI : JFrame() {
                         .addComponent(arg[5]))
                 .addGroup(gl.createSequentialGroup()
                         .addComponent(arg[6])
-                        .addComponent(arg[7]))
-                .addGroup(gl.createSequentialGroup()
-                        .addComponent(arg[8])
                 )
         )
 
@@ -111,10 +99,7 @@ internal class TennisUI : JFrame() {
                         .addComponent(arg[4])
                         .addComponent(arg[5]))
                 .addGroup(gl.createParallelGroup()
-                        .addComponent(arg[6])
-                        .addComponent(arg[7]))
-                .addGroup(gl.createParallelGroup()
-                        .addComponent(arg[8]))
+                        .addComponent(arg[6]))
         )
 
         pack()

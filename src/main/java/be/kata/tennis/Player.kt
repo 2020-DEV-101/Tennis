@@ -6,7 +6,6 @@ internal class Player{
 
     var score = scoreIterator.next()
     var hasWon = false
-    var isDeuce = false
 
     fun scorePoint(){
         if (score == Score.FORTY) {
