@@ -24,3 +24,5 @@ hs_err_pid*
 
 # Don't need IntelliJ files
 .idea
+#Don't need anything in target folder
+/target/
