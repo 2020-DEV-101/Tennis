@@ -9,41 +9,41 @@ class PlayerTests {
 
     @Test
     fun `A player should start at 0 points`() {
-        val playerOne = Player()
+        val player = Player()
 
-        assertThat(playerOne.score, `is`(equalTo(0)))
+        assertThat(player.score, `is`(equalTo(0)))
     }
 
     @Test
     fun `When a player scores, they should have 15 points`() {
-        val playerOne = Player()
-        playerOne.scorePoint()
+        val player = Player()
+        player.scorePoint()
 
-        assertThat(playerOne.score, `is`(equalTo(15)))
+        assertThat(player.score, `is`(equalTo(15)))
     }
 
     @Test
     fun `When a player scores twice, they should have 30 points`() {
-        val playerOne = Player()
-        repeat(2) { playerOne.scorePoint() }
+        val player = Player()
+        repeat(2) { player.scorePoint() }
 
-        assertThat(playerOne.score, `is`(equalTo(30)))
+        assertThat(player.score, `is`(equalTo(30)))
     }
 
     @Test
     fun `When a player scores three times, they should have 40 points`() {
-        val playerOne = Player()
-        repeat(3) { playerOne.scorePoint() }
+        val player = Player()
+        repeat(3) { player.scorePoint() }
 
-        assertThat(playerOne.score, `is`(equalTo(40)))
+        assertThat(player.score, `is`(equalTo(40)))
     }
 
     @Test
     fun `When a player has 40 points and scores, they win the game`() {
-        val playerOne = Player()
+        val player = Player()
 
-        repeat(4) { playerOne.scorePoint() }
-        assertThat(playerOne.hasWon, `is`(true))
+        repeat(4) { player.scorePoint() }
+        assertThat(player.hasWon, `is`(true))
     }
 
 }
