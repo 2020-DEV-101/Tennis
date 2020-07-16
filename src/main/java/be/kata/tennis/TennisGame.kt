@@ -26,8 +26,8 @@ internal class TennisGame(private val playerOne: Player, private val playerTwo: 
 
     private fun checkForDeuce() {
         if (playerOne.score == playerTwo.score
-                && playerOne.score == Score.FORTY.value
-                && playerTwo.score == Score.FORTY.value){
+                && playerOne.score == Score.FORTY
+                && playerTwo.score == Score.FORTY){
             playerOne.isDeuce = true
             playerOne.isDeuce = true
             isDeuce = true

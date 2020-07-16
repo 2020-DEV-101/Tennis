@@ -15,8 +15,8 @@ class TennisGameTests {
 
         repeat(3) { game.playerOneScores() }
         repeat(3) { game.playerTwoScores() }
-        assertThat(playerOne.score, `is`(equalTo(40)))
-        assertThat(playerTwo.score, `is`(equalTo(40)))
+        assertThat(playerOne.score.value, `is`(equalTo(40)))
+        assertThat(playerTwo.score.value, `is`(equalTo(40)))
         assertThat(playerOne.isDeuce, `is`(true))
         assertThat(playerTwo.isDeuce, `is`(true))
         assertThat(game.isDeuce, `is`(true))

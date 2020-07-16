@@ -1,24 +1,19 @@
 package be.kata.tennis
 
 internal class Player{
-
-    var score = 0
-    var hasWon = false
-    var isDeuce = false
-
     private val scoreList = listOf(Score.LOVE, Score.FIFTEEN, Score.THIRTY, Score.FORTY)
     private val scoreIterator = scoreList.listIterator(0)
 
-    init {
-        score = scoreIterator.next().value
-    }
+    var score = scoreIterator.next()
+    var hasWon = false
+    var isDeuce = false
 
     fun scorePoint(){
-        if (score == Score.FORTY.value) {
+        if (score == Score.FORTY) {
             hasWon = true
         } else
         {
-            score = scoreIterator.next().value
+            score = scoreIterator.next()
         }
     }
 }

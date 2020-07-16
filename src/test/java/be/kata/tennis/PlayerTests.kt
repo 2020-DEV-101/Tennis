@@ -11,7 +11,7 @@ class PlayerTests {
     fun `A player should start at 0 points`() {
         val player = Player()
 
-        assertThat(player.score, `is`(equalTo(0)))
+        assertThat(player.score.value, `is`(equalTo(0)))
     }
 
     @Test
@@ -19,7 +19,7 @@ class PlayerTests {
         val player = Player()
         player.scorePoint()
 
-        assertThat(player.score, `is`(equalTo(15)))
+        assertThat(player.score.value, `is`(equalTo(15)))
     }
 
     @Test
@@ -27,7 +27,7 @@ class PlayerTests {
         val player = Player()
         repeat(2) { player.scorePoint() }
 
-        assertThat(player.score, `is`(equalTo(30)))
+        assertThat(player.score.value, `is`(equalTo(30)))
     }
 
     @Test
@@ -35,7 +35,7 @@ class PlayerTests {
         val player = Player()
         repeat(3) { player.scorePoint() }
 
-        assertThat(player.score, `is`(equalTo(40)))
+        assertThat(player.score.value, `is`(equalTo(40)))
     }
 
     @Test
