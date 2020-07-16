@@ -55,4 +55,13 @@ class PlayerTests {
         assertThat(player.score.value, `is`("advantage"))
     }
 
+    @Test
+    fun `When the player is at advantage and they score, they win the game`() {
+        val player = Player()
+        player.score = Score.ADVANTAGE
+
+        player.scorePoint()
+        assertThat(player.hasWon, `is`(true))
+    }
+
 }

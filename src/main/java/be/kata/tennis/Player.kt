@@ -13,6 +13,7 @@ internal class Player{
         when(score){
             FORTY -> hasWon = true
             DEUCE -> score = ADVANTAGE
+            ADVANTAGE -> hasWon = true
             else -> score = scoreIterator.next()
         }
 
