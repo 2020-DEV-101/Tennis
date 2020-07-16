@@ -1,6 +1,8 @@
 package be.kata.tennis
 
-internal class Player(var score: Int = 0){
+internal class Player{
+
+    var score = 0
 
     private val scoreList = listOf(Score.LOVE, Score.FIFTEEN, Score.THIRTY, Score.FORTY)
     private val scoreIterator = scoreList.listIterator(0)
