@@ -13,16 +13,16 @@ internal class TennisUI : JFrame() {
     var playerTwohasWonLbl : JLabel
 
     init {
-        var playerOne = Player()
-        var playerTwo = Player()
-        var tennisGame = TennisGame(playerOne, playerTwo)
+        var tennisGame = TennisGame()
+        var playerOne = tennisGame.playerOne
+        var playerTwo = tennisGame.playerTwo
         title = "Tennis game"
 
         val resetBtn = JButton("Reset game").apply {
             addActionListener {
-                playerOne = Player()
-                playerTwo = Player()
-                tennisGame = TennisGame(playerOne, playerTwo)
+                tennisGame = TennisGame()
+                playerOne = tennisGame.playerOne
+                playerTwo = tennisGame.playerTwo
                 updatePlayerLabels(playerOne, playerTwo)
             }
         }

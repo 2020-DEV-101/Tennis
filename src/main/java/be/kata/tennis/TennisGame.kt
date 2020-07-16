@@ -1,40 +1,43 @@
 package be.kata.tennis
 
-import be.kata.tennis.Score.DEUCE
+import be.kata.tennis.Score.*
 
-internal class TennisGame(private val playerOne: Player, private val playerTwo: Player) {
-
-    var isDeuce = false
-        get() = (playerOne.score == DEUCE && playerTwo.score == DEUCE)
-        set(value) {
-            if (value){
-                playerOne.score = DEUCE
-                playerTwo.score = DEUCE
-            }
-            field = value
-        }
+internal class TennisGame {
+    val playerOne = Player(score = LOVE, hasWon = false)
+    val playerTwo = Player(score = LOVE, hasWon = false)
 
     // I wrote these two score functions so that only playerOne and playerTwo can score. giving a clear api.
     fun playerOneScores() {
-        playerScores(playerOne)
+        playerScores(playerOne, playerTwo)
     }
 
     fun playerTwoScores() {
-        playerScores(playerTwo)
+        playerScores(playerTwo, playerOne)
     }
 
-    private fun playerScores(player: Player) {
-        player.scorePoint()
-        checkForDeuce()
-    }
-
-    private fun checkForDeuce() {
-        if (playerOne.score == playerTwo.score
-                && playerOne.score == Score.FORTY
-                && playerTwo.score == Score.FORTY) {
-            playerOne.score = DEUCE
-            playerTwo.score = DEUCE
-            isDeuce = true
+    private fun playerScores(player: Player, opponent: Player) {
+        when (player.score) {
+            LOVE -> player.score = FIFTEEN
+            FIFTEEN -> player.score = THIRTY
+            THIRTY -> when (opponent.score) {
+                FORTY -> setDeuce(player, opponent)
+                else -> player.score = FORTY
+            }
+            FORTY -> when (opponent.score) {
+                ADVANTAGE -> setDeuce(player, opponent)
+                FORTY -> player.score = ADVANTAGE
+                else -> {
+                    player.hasWon = true
+                }
+            }
+            DEUCE -> player.score = ADVANTAGE
+            ADVANTAGE -> player.hasWon = true
         }
+
+    }
+
+    private fun setDeuce(player: Player, opponent: Player) {
+        player.score = DEUCE
+        opponent.score = DEUCE
     }
 }
