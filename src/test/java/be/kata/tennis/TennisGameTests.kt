@@ -38,12 +38,24 @@ class TennisGameTests {
     }
 
     @Test
-    fun `When a player has forty points and scores and the opponent has less than 40, they win the game`() {
+    fun `When a player has forty points and scores and the opponent has less than forty, they win the game`() {
         tennisGame.playerOne.score = Score.FORTY
         tennisGame.playerTwo.score = Score.THIRTY
         tennisGame.playerOneScores()
 
         assertThat(tennisGame.playerOne.hasWon, `is`(true))
+    }
+
+    @Test
+    fun `When both players of a game have forty points, they are at deuce`() {
+        tennisGame.playerOne.score = Score.THIRTY
+        tennisGame.playerTwo.score = Score.FORTY
+
+
+        tennisGame.playerOneScores()
+
+        assertThat(tennisGame.playerOne.score.name, `is`(equalTo("DEUCE")))
+        assertThat(tennisGame.playerTwo.score.name, `is`(equalTo("DEUCE")))
     }
 
     @Test
@@ -60,18 +72,6 @@ class TennisGameTests {
         tennisGame.playerOneScores()
 
         assertThat(tennisGame.playerOne.hasWon, `is`(true))
-    }
-
-    @Test
-    fun `When both players of a game have 40 points, they are at deuce`() {
-        tennisGame.playerOne.score = Score.THIRTY
-        tennisGame.playerTwo.score = Score.FORTY
-
-
-        tennisGame.playerOneScores()
-
-        assertThat(tennisGame.playerOne.score.name, `is`(equalTo("DEUCE")))
-        assertThat(tennisGame.playerTwo.score.name, `is`(equalTo("DEUCE")))
     }
 
 }
