@@ -46,4 +46,12 @@ class PlayerTests {
         assertThat(player.hasWon, `is`(true))
     }
 
+    @Test
+    fun `A player can be at deuce`() {
+        val player = Player()
+        player.isDeuce = true
+
+        assertThat(player.isDeuce, `is`(true))
+    }
+
 }
