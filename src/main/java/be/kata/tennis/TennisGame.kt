@@ -30,7 +30,10 @@ internal class TennisGame {
                     player.hasWon = true
                 }
             }
-            DEUCE -> player.score = ADVANTAGE
+            DEUCE -> {
+                player.score = ADVANTAGE
+                opponent.score = FORTY
+            }
             ADVANTAGE -> player.hasWon = true
         }
 
