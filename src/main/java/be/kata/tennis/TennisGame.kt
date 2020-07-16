@@ -31,7 +31,6 @@ internal class TennisGame {
             }
             FORTY -> when (opponent.score) {
                 ADVANTAGE -> setDeuce(player, opponent)
-                FORTY -> player.score = ADVANTAGE
                 else -> {
                     player.hasWon = true
                 }
