@@ -1,3 +1,15 @@
 package be.kata.tennis
 
-internal data class Player(val score: Int = 0)
+internal class Player(var score: Int = 0){
+
+    private val scoreList = listOf(Score.LOVE, Score.FIFTEEN, Score.THIRTY, Score.FORTY)
+    private val scoreIterator = scoreList.listIterator(0)
+
+    init {
+        score = scoreIterator.next().value
+    }
+
+    fun scorePoint(){
+        score = scoreIterator.next().value
+    }
+}
