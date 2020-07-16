@@ -59,13 +59,23 @@ class TennisGameTests {
     }
 
     @Test
-    fun `When the players is at deuce and they score, they gain advantage and the opponent goes back to forty`() {
+    fun `When the player is at deuce and they score, they gain advantage and the opponent goes back to forty`() {
         tennisGame.playerOne.score = Score.DEUCE
         tennisGame.playerTwo.score = Score.DEUCE
         tennisGame.playerOneScores()
 
         assertThat(tennisGame.playerOne.score.name, `is`("ADVANTAGE"))
         assertThat(tennisGame.playerTwo.score.name, `is`("FORTY"))
+    }
+
+    @Test
+    fun `When the player is at forty and scores and the opponent is at advantage, both players will be at deuce`() {
+        tennisGame.playerOne.score = Score.FORTY
+        tennisGame.playerTwo.score = Score.ADVANTAGE
+        tennisGame.playerOneScores()
+
+        assertThat(tennisGame.playerOne.score.name, `is`("DEUCE"))
+        assertThat(tennisGame.playerTwo.score.name, `is`("DEUCE"))
     }
 
     @Test
