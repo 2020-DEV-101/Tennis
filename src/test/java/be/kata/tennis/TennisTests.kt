@@ -47,4 +47,20 @@ class TennisTests {
         assertThat(playerOne.hasWon, `is`(true))
     }
 
+    @Test
+    fun `When both players of a game have 40 points, they are at deuce`() {
+        val playerOne = Player()
+        val playerTwo = Player()
+        val game = TennisGame(playerOne, playerTwo)
+
+        repeat(3) { game.playerOneScores() }
+        repeat(3) { game.playerTwoScores() }
+        assertThat(playerOne.score, `is`(equalTo(40)))
+        assertThat(playerTwo.score, `is`(equalTo(40)))
+        assertThat(playerOne.isDeuce, `is`(true))
+        assertThat(playerTwo.isDeuce, `is`(true))
+        assertThat(game.isDeuce, `is`(true))
+
+    }
+
 }
