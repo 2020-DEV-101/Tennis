@@ -18,3 +18,5 @@ Using IntelliJ you can open the `TennisUI.kt` file and click on the green arrow 
 Or use a run configuration with main class `be.kata.tennis.TennisUIKt`
 
 If IntelliJ or a similar IDE is not available the application can be run by following the steps described in https://kotlinlang.org/docs/tutorials/command-line.html
+
+Make sure to download all dependencies using `mvn clean install` or alternative commands or use the `Reload all maven projects` button.
