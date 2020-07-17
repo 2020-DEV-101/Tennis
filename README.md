@@ -10,6 +10,7 @@ and should be used by all contributors of that repository.
 Some explanations can be found in commit messages.
 I added maven to easily add dependencies.
 Of course any other build tool, such as gradle, can be used instead.
+If you see something strange in commit time or author information it's because I rebased all commits to remove my usual account name.
 
 ## Run the application
 
